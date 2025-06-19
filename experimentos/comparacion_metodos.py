@@ -130,3 +130,22 @@ plt.title("Impacto de Transformaciones (CNN)")
 plt.grid(True)
 plt.show()
 
+
+
+import faiss
+import numpy as np
+
+# Supón que tienes vectores de base
+vectores_base = np.load("vectores_reducidos.npy").astype("float32")
+
+# Crear índice FAISS
+dim = vectores_base.shape[1]
+index = faiss.IndexFlatL2(dim)  # Para distancia euclidiana
+index.add(vectores_base)
+
+# Consultar
+query = np.load("vector_consulta.npy").astype("float32").reshape(1, -1)
+D, I = index.search(query, k=10)
+
+# I contiene índices de los vectores más cercanos
+
