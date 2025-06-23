@@ -79,7 +79,7 @@ for nombre, sim in resultados[:5]:
 # Etapa 3: Ordenar resultados por relevancia y calcular el Rank Normalizado.
 ##############################
 
-from utils.evaluation import calcular_rank_normalizado
+from utils.evaluacion import calcular_rank_normalizado
 from extractores.cnn_extractor import extraer_resnet
 from pathlib import Path
 from utils.image_loader import cargar_imagen
@@ -132,7 +132,7 @@ from utils.image_loader import cargar_imagen
 from utils.visualizacion import mostrar_resultados
 
 # Imagen de consulta
-ruta = "datasets/CBIR_50/manzana/manzana_0001.jpg"
+ruta = "datasets/CBIR_50/Apple/Apple_1.jpg"
 imagen = cargar_imagen(ruta)
 vector = extraer_resnet(imagen)
 

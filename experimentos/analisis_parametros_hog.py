@@ -1,7 +1,7 @@
 from extractores.hog_extractor import extraer_hog
-from extractores.cnn_extractor import cargar_imagen
+from utils.image_loader import cargar_imagen
 from utils.io_utils import guardar_vector
-from utils.evaluation import calcular_rank_normalizado
+from utils.evaluacion import calcular_rank_normalizado
 from pathlib import Path
 import numpy as np
 import os
