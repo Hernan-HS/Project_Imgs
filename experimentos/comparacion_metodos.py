@@ -63,23 +63,6 @@ print(f"{'ResNet':<10} | {prom_cnn:<14.4f} | {time_cnn:.4f}")
 
 
 
-from utils.evaluation import curva_precision_recall
-import matplotlib.pyplot as plt
-
-recalls, precisiones = curva_precision_recall(
-    vector_consulta=vec_cnn,
-    clase_real="manzana",
-    carpeta_vectores="vectores/resnet",
-    medida="coseno"
-)
-
-plt.plot(recalls, precisiones, marker='o')
-plt.xlabel("Recall")
-plt.ylabel("Precision")
-plt.title("Curva Precision–Recall (CNN - manzana)")
-plt.grid(True)
-plt.show()
-
 
 
 from experimentos.visualizacion_caracteristicas import cargar_vectores_y_etiquetas, visualizar_2D

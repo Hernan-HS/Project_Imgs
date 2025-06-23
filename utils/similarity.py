@@ -44,4 +44,3 @@ def comparar_con_base(vector_consulta, carpeta_vectores, medida="coseno"):
     resultados.sort(key=lambda x: x[1], reverse=reverse)
 
     return resultados
-

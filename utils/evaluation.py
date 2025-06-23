@@ -1,4 +1,30 @@
 from utils.similarity import comparar_con_base
+from utils.image_loader import obtener_clase_desde_nombre
+
+def calcular_rank_normalizado(nombre_consulta, vector_consulta, carpeta_vectores, medida="coseno"):
+    """
+    Calcula el Rank Normalizado para una imagen de consulta.
+    
+    nombre_consulta: str → Ej. "manzana/manzana_0001"
+    """
+    clase_real = nombre_consulta.split("/")[0]
+    resultados = comparar_con_base(vector_consulta, carpeta_vectores, medida)
+
+    posiciones_relevantes = []
+    for i, (nombre, _) in enumerate(resultados):
+        clase_predicha = nombre.split("/")[0]
+        if clase_predicha == clase_real and nombre != nombre_consulta:
+            posiciones_relevantes.append(i + 1)  # R_i (1-based)
+
+    N_rel = len(posiciones_relevantes)
+    N = len(resultados)
+
+    if N_rel == 0:
+        return 1.0  # peor caso
+
+    rank_normalizado = sum(posiciones_relevantes) / (N_rel * N)
+    return rank_normalizado
+
 
 def curva_precision_recall(vector_consulta, clase_real, carpeta_vectores, medida="coseno"):
     """

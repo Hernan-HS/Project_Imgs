@@ -13,4 +13,3 @@ def guardar_vector(vector, nombre_salida, carpeta_destino):
     Path(carpeta_destino).mkdir(parents=True, exist_ok=True)
     ruta = Path(carpeta_destino) / f"{nombre_salida}.npy"
     np.save(ruta, vector)
-

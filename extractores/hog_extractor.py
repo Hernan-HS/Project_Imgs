@@ -31,4 +31,3 @@ def extraer_hog(imagen, parametros=None):
     )
 
     return features.astype(np.float32)
-
